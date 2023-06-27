@@ -1,0 +1,47 @@
+import java.util.Random;
+import java.util.Scanner;
+class   game{
+    int number;
+    int ipnumber;
+    int noOfGuesses=0;
+    public int getNoOfGuesses() {
+        return noOfGuesses;
+    }
+    public void setNoOfGuesses(int noOfGuesses) {
+        this.noOfGuesses = noOfGuesses;
+    }
+     game(){
+        Random r=new Random();
+         this.number=r.nextInt(100);
+    }
+    void takeUserInput(){
+        System.out.println("Guess the number!!!");
+        Scanner sc=new Scanner(System.in);
+        ipnumber=sc.nextInt();
+    }
+    boolean isCorrectNumber(){
+        noOfGuesses++;
+    if (ipnumber==number){
+    System.out.printf("You guessed correct number %d in %d attempts \n",ipnumber,noOfGuesses);
+    return  true;
+}
+    else if (ipnumber>number) {
+    System.out.println("Expected number is less than "+ipnumber);
+}
+else if (ipnumber<number) {
+    System.out.println("Expected number is more than "+ipnumber);
+}
+return false;
+    }
+}
+public class noGuessing {
+    public static void main(String[] args) {
+        game g=new game();
+        boolean b=false;
+        while(!b) {
+            g.takeUserInput();
+           b =g.isCorrectNumber();
+            System.out.println(b);
+        }
+        }
+    }
